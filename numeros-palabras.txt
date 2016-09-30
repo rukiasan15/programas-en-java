@@ -1,0 +1,53 @@
+import javax.swing.*;
+public class numeros {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+int num, multi, u, i=0, j;
+int vec[]= new int [9]; 
+vec[0]=10; vec[1]=20; vec[2]=30; vec[3]=40; vec[4]=50;
+vec[5]=60; vec[6]=70; vec[7]=80; vec[8]=90; 
+String pal[]= new String [9];
+pal[0]="dieci"; pal[1]="veinte"; pal[2]="treinta"; pal[3]="cuarenta";
+pal[4]="cincuenta"; pal[5]="sesenta"; pal[6]="setenta"; pal[7]="ochenta";
+pal[8]="noventa";
+String ubi[]= new String [9];
+ubi[0]="uno"; ubi[1]="dos"; ubi[2]="tres"; ubi[3]="cuatro"; ubi[4]="cinco";
+ubi[5]="seis"; ubi[6]="siete"; ubi[7]="ocho"; ubi[8]="nueve";
+num=Integer.parseInt(JOptionPane.showInputDialog("ingrese numero"));
+ 
+ if(num>10)
+{ 
+for(u=0; u<9; u++)
+{ if(num==vec[u]) { break; } }
+
+if(num%10==0)
+{ JOptionPane.showMessageDialog(null,pa[u]);}
+
+while(num%10!=0)
+{ num=num-1; i++; }
+
+
+for(u=0; u<9; u++)
+{ if(num==vec[u]) { break; } }
+
+multi=i*10;
+for(j=0; j<9; j++)
+{ if(multi==vec[j]) {break; } }
+
+JOptionPane.showMessageDialog(null,pal[u]+" y "+ubi[j]);
+	}
+ 
+ else if(num<10 && num>0)
+ { multi=num*10;
+ 	for(j=0; j<9; j++)
+ 	{ if(multi==vec[j]) {break; } }
+ 	JOptionPane.showMessageDialog(null,ubi[j]);
+ }
+ 
+ if(num==10)
+ {JOptionPane.showMessageDialog(null, "diez"); }
+if(num==0)
+{JOptionPane.showMessageDialog(null,"cero"); }
+	}
+}

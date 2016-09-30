@@ -1,0 +1,47 @@
+import javax.swing.*;
+public class salario {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+String nombre; double salario;
+
+nombre=JOptionPane.showInputDialog("Nombre");
+salario=Double.parseDouble(JOptionPane.showInputDialog("Salario"));
+
+int a=0, b=0, c=0, d=0, e=0, f=0, g=0, h=0, i=0, cod=0; double suma=0;
+
+for(;;)
+{ if(suma==salario) {break;}
+if(suma<salario && cod==0)
+	{ suma=suma+20; a++; } if(suma>salario && cod==0) { cod=1; a--; suma=suma-20; }
+	if(suma<salario && cod==1)
+	{ suma=suma+10; b++; } if(suma>salario && cod==1) { cod=2; b--; suma=suma-10; }
+	if(suma<salario && cod==2)
+	{ suma=suma+5; c++; } if(suma>salario && cod==2) { cod=3; c--; suma=suma-5;}
+	if(suma<salario && cod==3)
+	{ suma=suma+1; d++; } if(suma>salario && cod==3) { cod=4; d--; suma=suma-1;}
+	if(suma<salario && cod==4)
+	{ suma=suma+0.50; e++; } if(suma>salario && cod==4) { cod=5; e--; suma=suma-0.50; }
+	if(suma<salario && cod==5)
+	{ suma=suma+0.25; f++; } if(suma>salario && cod==5) { cod=6; f--; suma=suma-0.25;}
+	if(suma<salario && cod==6)
+	{ suma=suma+0.10; g++; } if(suma>salario && cod==6) { cod=7; g--; suma=suma-0.10;}
+	if(suma<salario && cod==7)
+	{ suma=suma+0.05; h++; } if(suma>salario && cod==7) { cod=8; h--; suma=suma-0.05;}
+	if(suma<salario && cod==8)
+	{ suma=suma+0.01; i++; } if(suma>salario && cod==8) { cod=9; i--; suma=suma-0.01;}
+	
+	
+	
+	
+	
+	
+}
+
+
+JOptionPane.showMessageDialog(null,nombre+ "\n\n(^3^)  20   $   10   $   5   $   1   $   0.50   $   0.25   $   0.10   $   0.05   $   0.01  (^3^)\n\n"
+		+ "           "+a+"          "+b+"          "+c+"         "+d+"           "+e+"             "+f+"              "+g+"              "+h+"              "+i);
+
+}
+
+	}

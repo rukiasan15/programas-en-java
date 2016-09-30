@@ -1,0 +1,21 @@
+import javax.swing.*;
+import java.util.Random;
+public class adivinanza {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+Random v = new Random();
+int valor=v.nextInt(10)+1;
+int n, i;
+JOptionPane.showMessageDialog(null,"adivina un numero entre 0 y 10 tiene 3 oportunidades");
+for(i=1; i<=3; i++)
+{ n=Integer.parseInt(JOptionPane.showInputDialog("ingrese un numero"));
+if(n==valor) { JOptionPane.showMessageDialog(null, "adivinastes"); break; }
+if(n>valor) { JOptionPane.showMessageDialog(null, "el numero es alto"); }
+if(n<valor) { JOptionPane.showMessageDialog(null, "el numero es bajo"); }
+if(i==3 && n!=valor) {JOptionPane.showMessageDialog(null, "perdistes"); }
+}
+
+	}
+
+}

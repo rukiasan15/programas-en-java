@@ -1,0 +1,289 @@
+package a;
+import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javax.swing.*;
+
+import java.io.File;
+
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
+import java.util.Random;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.applet.*;
+import java.awt.*;
+import java.lang.*;
+import java.net.URL;
+
+public class laberinto extends JComponent {
+
+	//static Frame ventana= new Frame();
+	private boolean arriba, abajo, izquierda, derecha;	
+	Image img, aba, flor, fondo, lluvia, nube, meta; 
+	private int x, y, i, j, k, p, cod, com; 
+
+	
+Random r=new Random();
+
+
+public void f(){
+	for(;;) 
+	{	i=r.nextInt(648)+0; if(i==105 || i==300 || i==648 || i==310 || i==360) {break;}}
+	 
+if(i==105) {j=473; } if(i==300) {j=173;} if(i==648) {j=323;} if(i==310) {j=423;}
+if(i==360) {j=273;}
+
+for(;;)
+{ k=r.nextInt(648)+0; if(k==290 || k==235 || k==648 || k==164) {break;}}
+k=164;
+if(k==290) {p=323;} if(k==235) {p=423;} if(k==648) {p=123;} if(k==164) {p=223;}
+
+}
+
+public laberinto() {
+	
+	f(); 
+	fondo=(Toolkit.getDefaultToolkit().getImage("templo_anime_by_nashi4-d5rxulp.jpg"));
+	setSize(800,680); setName("LABERINTO");
+	setPreferredSize(new Dimension(800, 680));
+	img=(Toolkit.getDefaultToolkit().getImage("Temari.gif"));
+	aba=(Toolkit.getDefaultToolkit().getImage("flor.png"));
+	flor=(Toolkit.getDefaultToolkit().getImage("abanico.png"));
+	lluvia=(Toolkit.getDefaultToolkit().getImage("gifs-animados-lluvia-5039176.gif"));
+	nube=(Toolkit.getDefaultToolkit().getImage("nube.png"));
+	meta=(Toolkit.getDefaultToolkit().getImage("fuegos-artificiales-10.gif"));
+	
+	
+	x=101; y=123; 
+	
+addKeyListener(new KeyAdapter() {
+    public void keyPressed(KeyEvent e) {
+        actualiza(e.getKeyCode(), true);
+    }
+
+    public void keyReleased(KeyEvent e) {
+        actualiza(e.getKeyCode(), false);
+    }
+
+    private void actualiza(int keyCode, boolean pressed) {
+       switch (keyCode) {
+//ARRIBA
+        	case KeyEvent.VK_UP:
+                arriba = pressed; ar(); 
+              
+               break;
+//ABAJO
+            case KeyEvent.VK_DOWN:
+                abajo = pressed;  ab();
+       
+                break; 
+//IZQUIERDA
+            case KeyEvent.VK_LEFT:
+                izquierda = pressed; iz();
+                
+                break;
+//DERECHA
+            case KeyEvent.VK_RIGHT:
+                derecha = pressed; de();
+                
+                break;
+        }
+    }
+});
+setFocusable(true);
+}
+	
+
+private void ar(){
+	 if(x>=640 && x<700 && y>121 && y<=273){y=y-2; update(null); }
+     if(x>=571 && x<593 && y>171 && y<=223) {y=y-2; update(null);}
+     if(x>221 && x<235 && y>221 && y<=373) {y=y-2; update(null);} 
+     if(x>102 && x<161 && y>221 && y<=473) {y=y-2; update(null);}
+     if(x>161 && x<174 && y>271 && y<=373) {y=y-2; update(null);}
+     if(x>458 && x<=472 && y>271 && y<=473) {y=y-2; update(null);}
+     if(x>=285 && x<=300 && y>271 && y<=323) {y=y-2; update(null);}
+     if(x>=523 && x<=534 && y>321 && y<=373) {y=y-2; update(null);}
+     if(x>=161 && x<170 && y>421 && y<=473) {y=y-2; update(null);}
+     if(x>403 && x<465 && y>271 && y<=423) {y=y-2; update(null);}
+     if(x>346 && x<356 && y>421 && y<=473) {y=y-2; update(null);}
+     if(x>=219 && x<312 && y>471 && y<=523) {y=y-2; update(null); }
+     
+}
+	
+private void ab(){
+    if(x>=640 && x<700 && y>=121 && y<273) {y=y+2; update(null); }
+    if(x>=571 && x<595 && y>=171 && y<223) {y=y+2; update(null);}
+    if(x>221 && x<235 && y>=221 && y<373) {y=y+2; update(null);}
+    if(x>102 && x<=161 && y>=221 && y<473) {y=y+2; update(null);}
+    if(x>161 && x<174 && y>=271 && y<373) {y=y+2; update(null); }
+    if(x>=458 && x<=472 && y>=271 && y<473) { y=y+2; update(null);}
+    if(x>=285 && x<=300 && y>=271 && y<323) {y=y+2; update(null);}
+    if(x>=523 && x<=534 && y>=321 && y<373) {y=y+2; update(null);}
+    if(x>=161 && x<170 && y>=421 && y<473) {y=y+2; update(null); }
+    if(x>=403 && x<465 && y>=371 && y<423) {y=y+2; update(null); }
+    if(x>=346 && x<356 && y>=421 && y<473) {y=y+2; update(null);}
+    if(x>=219 && x<312 && y>=471 && y<523) {y=y+2; update(null);}
+}
+
+private void iz(){
+	//if(x>=378 && x<=422) {x=123; update(null);}
+	if(x>102 && y>=121 && y<=123) {x=x-2; update(null); }
+    if(x>104 && y>=171 && y<=173) {x=x-2; update(null);}
+    if(x<=640 && x>224 && y>=221 && y<=223) {x=x-2; update(null);}
+    if(x>106 && x<=648 && y>=371 && y<=373) {x=x-2; update(null); }
+    if(x>106 && x<=170 && y>=221 && y<=223) {x=x-2; update(null);}
+    if(x>=350 && x<595 && y>=271 && y<=273) {x=x-2; update(null);}
+    if(x>285 && x<=472 && y>=321 && y<=323) {x=x-2; update(null); }
+    if(x>523 && x<=652 && y>=321 && y<=323) {x=x-2; update(null);}
+    if(x>106 && x<=250 && y>=421 && y<=423){x=x-2; update(null);}
+    if(x>106 && x<=172 && y>=471 && y<=473){x=x-2; update(null); }
+    if(x>403 && x<=652 && y>=421 && y<=423) {x=x-2; update(null); }
+    if(x>219 && x<=652 && y>=471 && y<=473) {x=x-2; update(null);}
+    if(x>300 && x<=355 && y>=421 && y<=423) {x=x-2; update(null);}
+    if(x>104 && y>=521 && y<=539) {x=x-2; update(null);}
+}
+
+private void de(){
+	//if(x>=378 && x<=422) {x=450; update(null);}
+	if(x<=648 && y>=121 && y<=123) {x=x+2; update(null); }
+    if(x<=648 && y>=171 && y<=173) {x=x+2; update(null);}
+    if(x<590 && x>=221 && y<=221 && y<=223) {x=x+2; update(null); }
+    if(x<=648 && y>=371 && y<=373) {x=x+2; update(null); }
+    if(x<=170 && y>=221 && y<=223) {x=x+2; update(null);}
+    if(x<=590 && x>=345 && y>=271 && y<=273) {x=x+2; update(null); }
+    if(x>283 && x<=470 && y>=321 && y<=323) {x=x+2; update(null);}
+    if(x>521 && x<=648 && y>=321 && y<=323) {x=x+2; update(null);}
+    if(x>104 && x<=248 && y>=421 && y<=423) {x=x+2; update(null); }
+    if(x>104 && x<=170 && y>=471 && y<=473) {x=x+2; update(null);}
+    if(x>401 && x<=648 && y>=421 && y<=423) {x=x+2; update(null);}
+    if(x>217 && x<=648 && y>=471 && y<=473) {x=x+2; update(null);}
+    if(x>298 && x<=353 && y>=421 && y<=423) {x=x+2; update(null);}
+    if(x<=700 && y>=521 && y<=539) {x=x+2; update(null);}
+}
+public void paint(final Graphics a){
+	
+	//fondo
+	 a.fillRect(0,0,800,680); a.drawImage(fondo,0,0,800,700,this);
+	//a.setColor(Color.BLACK);
+	
+	
+	//laberinto
+	a.setColor(Color.black); a.drawLine(100,120,700,120); a.setColor(Color.black); a.drawLine(100,119,700,119);
+	
+	a.setColor(Color.black);	a.drawLine(100,170,640,170); a.setColor(Color.black);	a.drawLine(100,169,640,169);
+	
+	a.setColor(Color.black); a.drawLine(100,220,580,220); a.setColor(Color.black); a.drawLine(100,219,580,219);
+	
+	a.setColor(Color.black);	a.drawLine(100,170,100,570); a.setColor(Color.black); a.drawLine(101,170,101,570);
+	
+	a.setColor(Color.black); a.drawLine(700,120,700,520); a.setColor(Color.black); a.drawLine(699,120,699,520);
+	
+	a.setColor(Color.black); a.drawLine(100,570,700,570); a.setColor(Color.black); a.drawLine(100,569,700,569);
+	
+	a.setColor(Color.black); a.drawLine(640,220,640,320); a.setColor(Color.black); a.drawLine(641,220,641,320);
+	
+	a.setColor(Color.black); a.drawLine(640,320,698,320); a.setColor(Color.black); a.drawLine(640,319,698,319);
+	
+	a.setColor(Color.black);	a.drawLine(220,220,220,370); a.setColor(Color.black);	a.drawLine(221,220,221,370);
+	
+	a.setColor(Color.black); a.drawLine(160,270,220,270); a.setColor(Color.black); a.drawLine(160,269,220,269);
+	
+	a.setColor(Color.black); a.drawLine(160,270,160,370); a.setColor(Color.black); a.drawLine(159,270,159,370);
+	
+	a.setColor(Color.black);	a.drawLine(280,270,640,270); a.setColor(Color.black); a.drawLine(280,269,640,269);
+	
+	a.setColor(Color.black); a.drawLine(280,270,280,370); a.setColor(Color.black); a.drawLine(279,270,279,370);
+	
+	a.setColor(Color.black); a.drawLine(280,370,460,370); a.setColor(Color.black); a.drawLine(280,369,460,369);
+	
+	a.setColor(Color.black);a.drawLine(640,320,520,320); a.setColor(Color.black);a.drawLine(640,319,520,319);
+	
+	a.setColor(Color.black);a.drawLine(340,320,460,320); a.setColor(Color.black);a.drawLine(340,319,460,319);
+	
+	a.setColor(Color.black); a.drawLine(340,270,340,320); a.setColor(Color.black); a.drawLine(339,270,339,320);
+	
+	a.setColor(Color.black);a.drawLine(520,320,520,370); a.setColor(Color.black);a.drawLine(521,320,521,370);
+	
+	a.setColor(Color.black);	a.drawLine(160,420,400,420); a.setColor(Color.black); a.drawLine(160,421,400,421);
+	
+	a.setColor(Color.black);a.drawLine(520,420,698,420);a.setColor(Color.black);a.drawLine(520,419,698,419);
+	
+	a.setColor(Color.black);	a.drawLine(300,420,300,470); a.setColor(Color.black); a.drawLine(301,420,301,470);
+	
+	a.setColor(Color.black);	a.drawLine(400,420,400,470); a.setColor(Color.black); a.drawLine(401,420,401,470);
+	
+	a.setColor(Color.black);	a.drawLine(401,470,460,470);a.setColor(Color.black);	a.drawLine(401,469,460,469);
+	
+	a.setColor(Color.black);a.drawLine(520,470,698,470); a.setColor(Color.black);a.drawLine(520,469,698,469);
+	
+	a.setColor(Color.black);a.drawLine(300,470,350,470);a.setColor(Color.black);a.drawLine(300,469,350,469);
+	
+	a.setColor(Color.black); a.drawLine(350,520,700,520); a.setColor(Color.black); a.drawLine(350,519,700,519);
+	
+	a.setColor(Color.black); a.drawLine(100,520,220,520); a.setColor(Color.black); a.drawLine(100,519,220,519);
+	
+	a.setColor(Color.black);	a.drawLine(220,470,220,520); a.setColor(Color.black); a.drawLine(221,470,221,520);
+	
+	a.setColor(Color.black);a.drawLine(220,470,300,470); a.setColor(Color.black);a.drawLine(220,469,300,469);
+	
+	a.setColor(Color.black);a.drawLine(580,370,700,370);a.setColor(Color.black);a.drawLine(580,369,700,369);
+	
+	//meta
+	/*a.setFont(new Font("Comic Sans MS",Font.BOLD,12));
+	a.setColor(Color.white);
+	a.drawString("META",710,550);*/
+	
+	//inicio
+/*	a.setFont(new Font("Comic Sans MS",Font.BOLD,12));
+	a.setColor(Color.white);
+	a.drawString(""+k+" "+x+" "+p+" "+y,35,145);*/
+	
+	//imagen
+	a.drawImage(img,x,y,50,50,this); 
+a.drawImage(lluvia,400,123,45,45,this);
+a.drawImage(nube,380,95,95,40,this);
+//a.drawImage(meta,700,500,100,100,this);
+
+if(j==473) { if(x<=119 && x>=105 && y>=471 && y<=473) {com=1; }}
+if(j==423) { if(x<=317 && x>=310 && y>=421 && y<=423) {com=1; }} 
+if(j==273)	{if(x<=373 && x>=360 && y>=271 && y<=273) {com=1; } }
+if(j==173) {if(x<=311 && x>=300 && y>=171 && y<=173) {com=1; } } 
+if(com!=1) {a.drawImage(aba,i,j,43,43,this); }
+
+if(p==323) {if(x<=313 && x>=290 && y>=321 && y<=323) {cod=2; }}
+if(p==423) {if(x>=230 && x<=235 && y>=421 && y<=423) {cod=2; }}
+if(p==123) {if(x>=635 && x<=648 && y==123) {cod=2; }}
+if(p==223) { if(x>=157 && x<=164 && y>=221 && y<=223) {cod=2; }}
+if(cod!=2) { a.drawImage(flor,k,p,43,43,this);}
+	       
+}
+ 
+
+public static void main(String[] args) throws Exception {
+		JFrame jf = new JFrame();
+    jf.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+        });
+    jf.setResizable(false);
+    laberinto demo = new laberinto();
+    jf.getContentPane().add(demo);
+    jf.pack();
+    jf.setVisible(true);
+    
+}
+ 
+
+
+}
+

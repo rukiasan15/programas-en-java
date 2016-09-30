@@ -1,0 +1,17 @@
+import javax.swing.*;
+public class ayuda {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+int a, f=1, k=0, i, c=1; JTextArea t= new JTextArea();
+a=Integer.parseInt(JOptionPane.showInputDialog("ingrese numero"));
+if(a==1) { t.append("0"); }
+if(a>=2) {t.append("0\n1\n");}
+if(a>2)
+{for(i=1; i<=a; i++)
+{ f=f+k; k=c; c=f;
+	t.append(f+"\n"); } }
+JOptionPane.showMessageDialog(null, t);
+	}
+
+}

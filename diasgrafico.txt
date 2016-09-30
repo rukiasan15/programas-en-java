@@ -1,0 +1,56 @@
+import javax.swing.*;
+import java.util.Calendar;
+
+public class dias {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub 7278
+Calendar cal = Calendar.getInstance();		
+			int diac=cal.get(Calendar.DAY_OF_MONTH);
+			int mesac=cal.get(Calendar.MONTH)+1;
+			int anoac=cal.get(Calendar.YEAR);
+			int dia, mes, ano;
+			int res1, multi, suma=0, sum2=0, sum3=0, po=365, total;
+			int i, j, b, c, d;
+			
+			JOptionPane.showMessageDialog(null, "ingrese fecha de nacimiento");
+			dia=Integer.parseInt(JOptionPane.showInputDialog("dia"));
+			mes=Integer.parseInt(JOptionPane.showInputDialog("mes en numero"));
+			ano=Integer.parseInt(JOptionPane.showInputDialog("anio"));
+			
+			res1= (anoac-ano)-1; multi=res1*365; 
+
+			for(i=0; i<mesac-1; i++) 
+			{	
+				
+				if(i%2!=0 && mesac<=7) { sum2=sum2+31;  }
+			  if(i%2 ==0 && mesac >= 8) {sum2=sum2+31; }
+			  if(i%2==0 && mesac <= 7) { sum3=sum3+30; }
+			  if(i%2!=0 && mesac >=8) {sum3=sum3+30;}
+				
+				}
+			if(anoac % 4 == 0 && anoac % 100 ==0 && mesac >=2) { sum3=sum3-1;}
+			if(anoac % 4 != 0 && anoac % 100 !=0 && mesac >=2) { sum3=sum3-2;}
+			suma=sum2+sum3;
+			for(c=1; c<=diac; c++)
+			{ suma=suma+1;} 
+			
+			for(j=0; j<mes-1; j++) 
+			{ if(j%2!=0 && mes<=7) { po=po-31; }
+			  if(j%2 ==0 && mes >= 8) {po=po-31;}
+			  if(j%2==0 && mes <= 7) { po=po-30; }
+			  if(j%2!=0 && mes >=8) {po=po-30; }
+			} 
+			  if(ano % 4 == 0 && ano % 100 ==0 && mes >=2) { po=po+1;}
+			if(ano % 4 != 0 && ano % 100 !=0 && mes >=2) { po=po+2;}
+			//JOptionPane.showMessageDialog(null, po);
+			for(d=1; d<dia; d++)
+			{po=po-1;}	
+
+			total=po+suma+multi;
+
+			JOptionPane.showMessageDialog(null, "a vivido "+total+" dias");
+
+		}
+
+	}

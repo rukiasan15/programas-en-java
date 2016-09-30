@@ -1,0 +1,22 @@
+import javax.swing.*;
+public class asterisko {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+String ma[][]=new String[6][6];
+JTextArea z=new JTextArea();
+int i, j;
+for(i=0; i<6; i++)
+{ for(j=0; j<6; j++)
+{ if(i==0 || i==5) { ma[i][j]="*"; }
+ if(i>0 && i<5){ ma[i][0]="*"; ma[i][5]="*"; }
+ if(i>0 && i<5 && j>0 && j<5) {ma[i][j]=" "; }
+z.append(ma[i][j]+"\t"); }
+z.append("\n");} 
+	JOptionPane.showMessageDialog(null,z);
+	}
+
+}

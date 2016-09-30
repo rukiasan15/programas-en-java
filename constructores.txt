@@ -1,0 +1,36 @@
+import javax.swing.*;
+public class employee {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+emp fn= new emp();
+emp ln= new emp();
+emp di= new emp();		
+emp dn= new emp();
+JOptionPane.showMessageDialog(null, fn.firstname+" "+ln.lastname+"\n"+di.calcID()+"\n"+dn.returndeptname());
+		
+	}
+
+}
+
+
+class emp {
+	String firstname, lastname, deptname;
+int deptID;
+	emp(){
+		firstname="Andrea";
+		lastname="Chen";
+	}
+	int calcID() { 
+		deptID=454891;
+		return deptID;}
+
+	String returndeptname() {
+		deptname="gata ninja vampiro idol"; return deptname; 
+	}
+	
+}
